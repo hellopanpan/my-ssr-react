@@ -8,6 +8,7 @@ interface AboutProps {
   getList: Function;
   name: string;
   list: any[];
+  staticContext?: any;
 }
 const About: React.FC<AboutProps> = (props) => {
   useEffect(() => {
@@ -20,7 +21,7 @@ const About: React.FC<AboutProps> = (props) => {
         <title>Panpan about page</title>
         <meta name="description" content="this is panpan about page" />
       </Helmet>
-      <Header></Header>
+      <Header staticContext={props.staticContext}></Header>
       <div>About {props.name}</div>
       <div>
         {props.list.map((item, index) => {

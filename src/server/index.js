@@ -2,7 +2,6 @@ var express = require("express");
 var proxy = require("express-http-proxy");
 import { render } from "./utils";
 
-// import Home from "../container/Home";
 var app = express();
 app.use(express.static("public"));
 app.use(
