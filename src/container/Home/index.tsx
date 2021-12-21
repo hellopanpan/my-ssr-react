@@ -2,7 +2,11 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { Helmet } from "react-helmet";
 import Header from "@components/Header/";
 import styles from "./style.css";
-const Home = (props) => {
+
+interface HomeProps {
+  staticContext: { css: any[] };
+}
+const Home: React.FC<HomeProps> = (props) => {
   if (props.staticContext) {
     props.staticContext.css.push(styles._getCss());
   }

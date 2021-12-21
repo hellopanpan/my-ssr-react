@@ -3,7 +3,13 @@ import { Helmet } from "react-helmet";
 import Header from "@components/Header";
 import { connect } from "react-redux";
 import { action } from "./store";
-const About = (props) => {
+
+interface AboutProps {
+  getList: Function;
+  name: string;
+  list: any[];
+}
+const About: React.FC<AboutProps> = (props) => {
   useEffect(() => {
     props.getList();
   }, []);
@@ -30,14 +36,14 @@ const About = (props) => {
   );
 };
 
-About.loadData = (store) => {
-  return store.dispatch(action.getHomeList(true));
+(About as any).loadData = (store: any) => {
+  return store.dispatch(action.getHomeList());
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   name: state.about.name,
   list: state.about.list,
 });
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: any) => ({
   getList() {
     dispatch(action.getHomeList());
   },

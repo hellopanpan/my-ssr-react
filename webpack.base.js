@@ -2,7 +2,7 @@ const path = require("path");
 const resolve = (dir) => path.resolve(__dirname, "./src", dir);
 module.exports = {
   resolve: {
-    extensions: [".jsx", ".js"],
+    extensions: [".jsx", ".js", ".tsx", ".ts"],
     alias: {
       "@src": resolve("./"),
       "@components": resolve("components"),
@@ -28,6 +28,11 @@ module.exports = {
             ],
           ],
         },
+      },
+      {
+        test: /\.tsx?$/,
+        use: ["babel-loader", "ts-loader"],
+        exclude: /node_modules/,
       },
     ],
   },

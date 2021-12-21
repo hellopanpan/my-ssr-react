@@ -40,7 +40,7 @@ export const render = (req, res) => {
         <script >window.context = {
           state: ${JSON.stringify(store.getState())},
         }</script>
-        <script> var start = Date.now(); while(Date.now() - start <10000){}</script>
+        <script> var start = Date.now(); while(Date.now() - start <1000){}</script>
         <script src="./index.js"></script>
         </body> 
       </html>`);
