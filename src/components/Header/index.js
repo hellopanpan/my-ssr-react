@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./style.css";
+import { useGetStyle } from "@src/hooks";
 
 const Header = (props) => {
-  if (props.staticContext) props.staticContext.css.push(styles._getCss());
+  useGetStyle(props.staticContext, styles);
   return (
     <div className={styles.green}>
       <div>header</div>

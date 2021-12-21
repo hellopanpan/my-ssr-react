@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { StaticRouter } from "react-router-dom";
 import { renderToString } from "react-dom/server";
 import Routes from "../routes";
@@ -17,6 +18,7 @@ export const render = (req, res) => {
       promises.push(item.route.loadData(store));
     }
   });
+  const helmet = Helmet.renderStatic();
   Promise.all(promises).then(() => {
     console.log("server render 2", store.getState());
     const content = renderToString(
@@ -28,16 +30,19 @@ export const render = (req, res) => {
     );
     res.send(`<html>
       <head>
-          <title>my ssr</title>
+          ${helmet.title.toString()}
+          ${helmet.meta.toString()}
           <style>${context.css.join("\n")}</style>
+          <script> requestAnimationFrame(function(){ var firstPaintTime = Date.now() - performance.timing.navigationStart; console.log( 'get first paint time by raf:', firstPaintTime ); }); window.onload = function(){ requestAnimationFrame(function(){ var firstPaintTime = window.chrome.loadTimes().firstPaintTime * 1000 - window.performance.timing.navigationStart; console.log( 'get first paint time by chrome.loadTimes().firstPaintTime:', firstPaintTime ); }); }; </script>
         </head>
         <body>
         <div id="root">${content}</div>
         <script >window.context = {
           state: ${JSON.stringify(store.getState())},
         }</script>
+        <script> var start = Date.now(); while(Date.now() - start <10000){}</script>
         <script src="./index.js"></script>
-        </body>
+        </body> 
       </html>`);
   });
 };

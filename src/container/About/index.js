@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import Header from "@components/Header";
 import { connect } from "react-redux";
 import { action } from "./store";
@@ -8,6 +9,11 @@ const About = (props) => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Panpan about page</title>
+        <meta name="description" content="this is panpan about page" />
+      </Helmet>
       <Header></Header>
       <div>About {props.name}</div>
       <div>
