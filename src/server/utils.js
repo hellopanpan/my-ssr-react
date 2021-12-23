@@ -7,28 +7,29 @@ import { renderRoutes, matchRoutes } from "react-router-config";
 import { Provider } from "react-redux";
 import { getStore } from "@src/store";
 
-export const render = (req, res) => {
-  const branchs = matchRoutes(Routes, req.path);
+export const render = async (ctx) => {
+  const branchs = matchRoutes(Routes, ctx.request.path);
   const store = getStore();
   let promises = [];
   let context = { css: [] };
-
   branchs.forEach((item) => {
     if (item.route.loadData) {
       promises.push(item.route.loadData(store));
     }
   });
+
   const helmet = Helmet.renderStatic();
-  Promise.all(promises).then(() => {
-    console.log("server render 2", store.getState());
-    const content = renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.path} context={context}>
-          <div>{renderRoutes(Routes)}</div>
-        </StaticRouter>
-      </Provider>
-    );
-    res.send(`<html>
+  await Promise.all(promises);
+  const content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={ctx.request.path} context={context}>
+        <div>{renderRoutes(Routes)}</div>
+      </StaticRouter>
+    </Provider>
+  );
+  console.log("server render!", ctx.request.path);
+  const html = `
+    <html>
       <head>
           ${helmet.title.toString()}
           ${helmet.meta.toString()}
@@ -43,6 +44,6 @@ export const render = (req, res) => {
         <script> var start = Date.now(); while(Date.now() - start <1000){}</script>
         <script src="./index.js"></script>
         </body> 
-      </html>`);
-  });
+      </html>`;
+  ctx.body = html;
 };

@@ -14,7 +14,6 @@ const getHomeList = () => {
     axiosInstance: AxiosInstance
   ) => {
     const store = getState();
-    console.log("store:" + store);
     return axiosInstance.get("/mock/1").then((res) => {
       dispatch(changeAction([1, 2, 3, 4, 5]));
     });

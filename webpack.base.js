@@ -16,14 +16,16 @@ module.exports = {
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: [
-            "@babel/preset-react",
+          presets: ["@babel/preset-react", "@babel/preset-env"],
+          plugins: [
             [
-              "@babel/preset-env",
+              "@babel/plugin-transform-runtime",
               {
-                targets: {
-                  browsers: ["last 2 versions"],
-                },
+                absoluteRuntime: false,
+                corejs: false,
+                helpers: true,
+                regenerator: true,
+                version: "7.0.0-beta.0",
               },
             ],
           ],
