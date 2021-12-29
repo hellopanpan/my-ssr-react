@@ -1,0 +1,13 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:build:server": "webpack --config webpack.server.js",
+    "dev:build:client": "webpack --config webpack.client.js",
+    "dev:start": "node \"./build/bundle.js\""
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -16,6 +16,7 @@
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "koa2-connect": "^1.0.2",
+    "koa2-cors": "^2.0.6",
     "prerender": "^5.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
