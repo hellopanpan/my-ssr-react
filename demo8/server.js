@@ -21,9 +21,10 @@ app.use(async (ctx) => {
     }
   });
   await Promise.all(promiseArr);
+  let context = { css: [] };
   const content = renderToString(
     <Provider store={store}>
-      <StaticRouter location={ctx.request.path}>
+      <StaticRouter location={ctx.request.path} context={context}>
         <div>{renderRoutes(Routes)}</div>
       </StaticRouter>
     </Provider>
@@ -32,6 +33,7 @@ app.use(async (ctx) => {
     <html>
       <head>
         <title>ssr</title>
+        <style>${context.css.join("\n")}</style>
       </head>
       <body>
         <div id="root">${content}</div>
