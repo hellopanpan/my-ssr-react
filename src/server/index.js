@@ -13,6 +13,6 @@ app.use(koaStatic("public"));
 app.use(render);
 //监听
 
-app.listen(3002, () => {
-  console.log("listen on 3002 port!");
+app.listen(8008, () => {
+  console.log("listen on 8008 port!");
 });

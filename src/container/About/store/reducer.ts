@@ -6,7 +6,7 @@ interface StateProps {
   list: any[];
 }
 
-const defaultState: StateProps = { name: "panpan", age: 30, list: [] };
+const defaultState: StateProps = { name: "panpan", age: 18, list: [] };
 
 export default (
   state = defaultState,

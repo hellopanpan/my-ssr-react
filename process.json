@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "fe-node",
+      "script": "build/bundle.js",
+      "log_date_format": "\"YYYY-MM-DD HH:mm:ss.SSS\"",
+      "merge_logs": true,
+      "instances": "1",
+      "exec_mode": "cluster",
+      "max_memory_restart": "1024M",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  ]
+}

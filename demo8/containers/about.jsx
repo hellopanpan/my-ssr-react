@@ -6,6 +6,7 @@ import { action } from "./store";
 import styles from "./about.css";
 
 const About = (props) => {
+  console.log(styles);
   if (props.staticContext) {
     props.staticContext.css.push(styles._getCss());
   }

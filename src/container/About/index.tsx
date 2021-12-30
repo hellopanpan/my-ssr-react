@@ -3,33 +3,40 @@ import { Helmet } from "react-helmet";
 import Header from "@components/Header";
 import { connect } from "react-redux";
 import { action } from "./store";
+import useStyles from "isomorphic-style-loader/useStyles";
+import styles from "./about.css";
 
 interface AboutProps {
   getList: Function;
   name: string;
+  age: string;
   list: any[];
-  staticContext?: any;
 }
 const About: React.FC<AboutProps> = (props) => {
+  useStyles(styles);
   useEffect(() => {
-    props.getList();
+    if (!props.list.length) props.getList();
   }, []);
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Panpan about page</title>
+        <title>SSR About Page</title>
         <meta name="description" content="this is panpan about page" />
       </Helmet>
-      <Header staticContext={props.staticContext}></Header>
-      <div>About {props.name}</div>
       <div>
+        <Header></Header>
+        <h2 onClick={() => alert("about")}>This is about</h2>
+        <p>about is the page ..... more discribe</p>
+        <h3 className={styles.title}>List Content</h3>
+        <p>name: {props.name}</p>
+        <p>age: {props.age}</p>
+        <h4>List: </h4>
         {props.list.map((item, index) => {
           return (
-            <div key={index}>
-              <span>{item}</span>
-              <br />
-            </div>
+            <p key={index}>
+              {item.id} --- {item.title}
+            </p>
           );
         })}
       </div>
@@ -42,6 +49,7 @@ const About: React.FC<AboutProps> = (props) => {
 };
 const mapStateToProps = (state: any) => ({
   name: state.about.name,
+  age: state.about.age,
   list: state.about.list,
 });
 const mapDispatchToProps = (dispatch: any) => ({

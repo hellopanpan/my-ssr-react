@@ -4,6 +4,7 @@ import { StaticRouter } from "react-router-dom";
 import { renderToString } from "react-dom/server";
 import Routes from "../routes";
 import { renderRoutes, matchRoutes } from "react-router-config";
+import StyleContext from "isomorphic-style-loader/StyleContext";
 import { Provider } from "react-redux";
 import { getStore } from "@src/store";
 
@@ -17,15 +18,20 @@ export const render = async (ctx) => {
       promises.push(item.route.loadData(store));
     }
   });
+  const css = new Set();
+  const insertCss = (...styles) =>
+    styles.forEach((style) => css.add(style._getCss()));
 
   const helmet = Helmet.renderStatic();
   await Promise.all(promises);
   const content = renderToString(
-    <Provider store={store}>
-      <StaticRouter location={ctx.request.path} context={context}>
-        <div>{renderRoutes(Routes)}</div>
-      </StaticRouter>
-    </Provider>
+    <StyleContext.Provider value={{ insertCss }}>
+      <Provider store={store}>
+        <StaticRouter location={ctx.request.path}>
+          <div>{renderRoutes(Routes)}</div>
+        </StaticRouter>
+      </Provider>
+    </StyleContext.Provider>
   );
   console.log("server render!", ctx.request.path);
   const html = `
@@ -33,7 +39,7 @@ export const render = async (ctx) => {
       <head>
           ${helmet.title.toString()}
           ${helmet.meta.toString()}
-          <style>${context.css.join("\n")}</style>
+          <style>${[...css].join("\n")}</style>
           <script> requestAnimationFrame(function(){ var firstPaintTime = Date.now() - performance.timing.navigationStart; console.log( 'get first paint time by raf:', firstPaintTime ); }); window.onload = function(){ requestAnimationFrame(function(){ var firstPaintTime = window.chrome.loadTimes().firstPaintTime * 1000 - window.performance.timing.navigationStart; console.log( 'get first paint time by chrome.loadTimes().firstPaintTime:', firstPaintTime ); }); }; </script>
         </head>
         <body>
@@ -41,7 +47,6 @@ export const render = async (ctx) => {
         <script >window.context = {
           state: ${JSON.stringify(store.getState())},
         }</script>
-        <script> var start = Date.now(); while(Date.now() - start <1000){}</script>
         <script src="./index.js"></script>
         </body> 
       </html>`;

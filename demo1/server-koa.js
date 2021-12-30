@@ -18,6 +18,6 @@ app.use(async (ctx) => {
 
 //监听
 
-app.listen(3003, () => {
-  console.log("listen on 3003 port!");
+app.listen(3001, () => {
+  console.log("listen on 3001 port!");
 });

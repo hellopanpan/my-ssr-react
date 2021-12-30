@@ -36,5 +36,5 @@ app.use(router.routes()).use(router.allowedMethods());
 var server = app.listen(3008, function () {
   var host = server.address().address;
   var port = server.address().port;
-  console.log("应用实例，访问地址为 http://%s:%s", host, port);
+  console.log("mock API 访问地址为 http://%s%s", host, port);
 });

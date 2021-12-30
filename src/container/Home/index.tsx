@@ -1,25 +1,19 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import Header from "@components/Header/";
-import styles from "./style.css";
 
-interface HomeProps {
-  staticContext: { css: any[] };
-}
-const Home: React.FC<HomeProps> = (props) => {
-  if (props.staticContext) {
-    props.staticContext.css.push(styles._getCss());
-  }
-
+interface HomeProps {}
+const Home: React.FC<HomeProps> = () => {
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Panpan home page</title>
-        <meta name="description" content="this is panpan home page" />
+        <title>SSR Home Page</title>
+        <meta name="description" content="this is panpan about page" />
       </Helmet>
-      <Header staticContext={props.staticContext}></Header>
-      <div className={styles.redText}>Home-test1</div>
+      <Header></Header>
+      <h2 onClick={() => alert("hello Home")}>This is Home</h2>
+      <p>Home is the page of .... and more discribe</p>
     </div>
   );
 };

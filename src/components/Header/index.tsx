@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useStyles from "isomorphic-style-loader/useStyles";
 import styles from "./style.css";
-import { useGetStyle } from "@src/hooks";
 
-interface HeaderProps {
-  staticContext: any;
-}
+interface HeaderProps {}
 const Header: React.FC<HeaderProps> = (props) => {
-  useGetStyle(props.staticContext, styles);
+  useStyles(styles);
   return (
-    <div className={styles.green}>
-      <div>header</div>
-      <Link to="/">home</Link>
+    <div>
+      <h3 className={styles.title}>This is Header</h3>
+      <Link to="/">toHome</Link>
       <br />
-      <Link to="/about">about</Link>
+      <Link to="/about">toAbout</Link>
     </div>
   );
 };

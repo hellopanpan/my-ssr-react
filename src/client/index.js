@@ -6,14 +6,18 @@ import { renderRoutes } from "react-router-config";
 import { Provider } from "react-redux";
 import Routes from "../routes";
 import { getClientStore as getStore } from "@src/store";
+import StyleContext from "isomorphic-style-loader/StyleContext";
 
 const App = () => {
+  const insertCss = () => {};
   return (
-    <Provider store={getStore()}>
-      <BrowserRouter>
-        <div>{renderRoutes(Routes)}</div>
-      </BrowserRouter>
-    </Provider>
+    <StyleContext.Provider value={{ insertCss }}>
+      <Provider store={getStore()}>
+        <BrowserRouter>
+          <div>{renderRoutes(Routes)}</div>
+        </BrowserRouter>
+      </Provider>
+    </StyleContext.Provider>
   );
 };
 ReactDom.hydrate(<App />, document.getElementById("root"));
