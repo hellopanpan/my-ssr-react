@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev": "npm-run-all --parallel dev:**",
     "dev:build:server": "webpack --config webpack.server.js",
     "dev:start": "node \"./build/bundle.js\""
   },

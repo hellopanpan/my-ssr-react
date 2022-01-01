@@ -1,4 +1,4 @@
-var Koa = require("koa");
+import Koa from "koa";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import Home from "./containers/Home";
@@ -17,6 +17,6 @@ app.use(async (ctx) => {
     </html>
    `;
 });
-app.listen(3003, () => {
-  console.log("listen:3003");
+app.listen(3002, () => {
+  console.log("listen:3002");
 });

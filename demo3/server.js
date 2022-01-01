@@ -7,8 +7,9 @@ import Home from "./containers/Home";
 const app = new Koa();
 app.use(koaStatic("public"));
 
-const content = renderToString(<Home />);
 app.use(async (ctx) => {
+  const content = renderToString(<Home />);
+  console.log(content);
   ctx.body = `
     <html>
       <head>
