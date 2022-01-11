@@ -1,0 +1,10 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "node server-koa.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

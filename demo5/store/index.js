@@ -1,5 +1,5 @@
-import thunk from "redux-thunk";
 import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
 import { reducer as AboutReducer } from "../containers/store";
 
 const reducer = combineReducers({

@@ -1,3 +1,4 @@
+// webpack.client.js
 const path = require("path");
 const resolve = (dir) => path.resolve(__dirname, "./src", dir);
 module.exports = {

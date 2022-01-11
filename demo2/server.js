@@ -1,3 +1,4 @@
+//  server.js
 import Koa from "koa";
 import React from "react";
 import { renderToString } from "react-dom/server";

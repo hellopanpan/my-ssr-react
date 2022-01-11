@@ -1,3 +1,4 @@
+// routes.js
 import Home from "./containers/home";
 import About from "./containers/about";
 export default [
