@@ -11,7 +11,7 @@ app.use(
       if (ctx.url === "/test") {
         return "*";
       }
-      return "http://localhost:3003";
+      return "*";
     },
     maxAge: 5,
     credentials: true,

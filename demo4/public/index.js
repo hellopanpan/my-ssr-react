@@ -533,7 +533,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _containers_home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./containers/home */ \"./containers/home.jsx\");\n/* harmony import */ var _containers_about__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./containers/about */ \"./containers/about.jsx\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  path: \"/\",\n  component: _containers_home__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  exact: true\n}, {\n  path: \"/about\",\n  component: _containers_about__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  exact: true\n}]);\n\n//# sourceURL=webpack:///./routes.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _containers_home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./containers/home */ \"./containers/home.jsx\");\n/* harmony import */ var _containers_about__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./containers/about */ \"./containers/about.jsx\");\n// routes.js\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  path: \"/\",\n  component: _containers_home__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  exact: true\n}, {\n  path: \"/about\",\n  component: _containers_about__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  exact: true\n}]);\n\n//# sourceURL=webpack:///./routes.js?");
 
 /***/ })
 
