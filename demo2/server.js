@@ -5,8 +5,10 @@ import { renderToString } from "react-dom/server";
 import Home from "./containers/Home";
 
 const app = new Koa();
-const content = renderToString(<Home />);
+
 app.use(async (ctx) => {
+  const content = renderToString(<Home />);
+  console.log(content);
   ctx.body = `
     <html>
       <head>

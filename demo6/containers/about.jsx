@@ -5,7 +5,7 @@ import { action } from "./store";
 
 const About = (props) => {
   useEffect(() => {
-    //props.getList();
+    props.getList();
   }, []);
   return (
     <div>
@@ -27,7 +27,6 @@ const About = (props) => {
   );
 };
 About.loadData = (store) => {
-  console.log("--store--", store);
   return Promise.all([store.dispatch(action.getHomeList())]);
 };
 const mapStateToProps = (state) => ({
