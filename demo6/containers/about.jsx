@@ -5,7 +5,7 @@ import { action } from "./store";
 
 const About = (props) => {
   useEffect(() => {
-    props.getList();
+    //props.getList();
   }, []);
   return (
     <div>
