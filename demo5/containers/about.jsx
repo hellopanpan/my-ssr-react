@@ -16,9 +16,9 @@ const About = (props) => {
       <p>name: {props.name}</p>
       <p>age: {props.age}</p>
       <h4>List: </h4>
-      {props.list.map((item) => {
+      {props.list.map((item, index) => {
         return (
-          <p>
+          <p key={index}>
             {item.id} --- {item.title}
           </p>
         );
