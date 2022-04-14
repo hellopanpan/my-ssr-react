@@ -33,7 +33,7 @@ app.use(async (ctx) => {
     <html>
       <head>
         <title>ssr</title>
-        <style>${context.css.join("\n")}</style>
+        
       </head>
       <body>
         <div id="root">${content}</div>

@@ -1,4 +1,4 @@
-# The SSR React App
+# The SSR React App Demo
 
 ### start the app
 
